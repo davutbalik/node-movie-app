@@ -12,7 +12,7 @@ const MovieSchema = new Schema({
       "Field '{PATH}' must be less than ({MAXLENGTH}) characters ",
     ],
     minlength: [
-      50,
+      5,
       "Field '{PATH}' must be less than ({MINLENGTH}) characters ",
     ],
   },
