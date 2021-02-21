@@ -15,6 +15,17 @@ router.get("/", (req, res) => {
     });
 });
 
+// GET A MOVIE
+router.get("/:movieId", (req, res) => {
+  MovieModel.findById(req.params.movieId)
+    .then((movieId) => {
+      res.json(movieId);
+    })
+    .catch((errorMsg) => {
+      res.json(errorMsg);
+    });
+});
+
 //POST
 router.post("/", function (req, res) {
   const movie = new MovieModel(req.body);
