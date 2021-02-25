@@ -5,7 +5,7 @@ const DirectorSchema = new Schema({
     name:{type:String, maxlength:60,minlength:2},
     surname:{type:String, maxlength:60,minlength:2},
     bio:{type:String, maxlength:100,minlength:20},
-    createdDate:{type:Date, default:Date.now}
+    createdAt:{type:Date, default:Date.now}
 })
 
 
