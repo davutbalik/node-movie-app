@@ -24,9 +24,31 @@ router.post("/register", (req, res, next) => {
     .catch((err) => {
       res.json(err);
     });
+}); 
 });
 
-  
-});
+router.post('/authenticate',(req,res)=>{
+  const {username,password} = req.body;
+  UserModel.findOne({username})
+              .then((resultUser)=>{
+                if(!resultUser) {res.end("user not found")}
+                else{
+                  bcrypt.compare(password,resultUser.password)
+                  .then((resultCompare)=>{
+                    if(!resultCompare){
+                       res.end("Authentication failed,wrong pass....");       
+                    }else{
+                      //JWT
+                      res.end("JWT")
+                    }
+                  })
+                  .catch(()=>{})
+                }
+                //res.json(resultUser)
+              })
+              .catch((err)=>{res.json(err)})
+})
+
+
 
 module.exports = router;
