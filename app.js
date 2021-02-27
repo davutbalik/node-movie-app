@@ -11,10 +11,11 @@ var directorsRouter = require('./routes/director.routes');
 //db connect
 const db = require('./helpers/db')();
 
-
-
-
 var app = express();
+
+const config = require('./config');
+app.set('api_secret_key',config.api_secret_key);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
