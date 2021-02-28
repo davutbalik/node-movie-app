@@ -87,7 +87,7 @@ router.put('/:movieId',(req,res,next)=>{
 //localhost:3000/api/movies/:movieId
 router.delete('/:movieId',(req,res,next)=>{
     MovieModel.findByIdAndRemove(req.params.movieId)
-                .then((data)=>{res.json(data)})
+                .then((data)=>{res.json({isdelete:true,deletedData:data})})
                 .catch((err)=>{
                     next({message:'The movie was not found.',code:99})
                     res.json(err)

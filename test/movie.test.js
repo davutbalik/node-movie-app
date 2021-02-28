@@ -113,8 +113,20 @@ describe(" Testing for api/movie", () => {
   });
 
 
-
-
+  describe("/DELETE movie id", () => {
+    it("it should DELETE  a movie", (done) => {
+      chai
+        .request(server)
+        .delete("/api/movies/" + movieId)
+        .set("x-access-token", token)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property('isdelete').eql(true)
+          done();
+        });
+    });
+  });
 
 
 
